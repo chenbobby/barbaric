@@ -1,0 +1,33 @@
+{
+  "name": "barbaric",
+  "version": "0.1.1",
+  "description": "safe messaging with no language barriers",
+  "main": "server/app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server/app.js --exec babel-node | bunyan -o short"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chenbobby/barbaric.git"
+  },
+  "author": "Bobby Chen",
+  "license": "AGPL-3.0",
+  "bugs": {
+    "url": "https://github.com/chenbobby/barbaric/issues"
+  },
+  "homepage": "https://github.com/chenbobby/barbaric#readme",
+  "dependencies": {
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1",
+    "restify": "^5.0.1",
+    "restify-router": "^0.4.2"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.24.1",
+    "babel-preset-env": "^1.6.0",
+    "babel-preset-react": "^6.24.1",
+    "bunyan": "^1.8.10",
+    "nodemon": "^1.11.0"
+  }
+}
