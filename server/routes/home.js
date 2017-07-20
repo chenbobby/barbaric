@@ -1,6 +1,8 @@
 //      /server/routes/home.js
 
 //      Imports
+import path from 'path';
+import restify from 'restify';
 import rr from 'restify-router';
 
 
@@ -10,9 +12,11 @@ const router = new rr.Router();
 
 router.get('/', (req, res, next) => {
     req.log.info('Home Route reached.');
-    res.send('Hello Barbarian')
     return next();
-});
+}, restify.plugins.serveStatic({
+    directory: __dirname + '/../static',
+    file: 'index.html',
+}));
 
 
 export default router;
