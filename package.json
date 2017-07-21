@@ -19,6 +19,8 @@
   },
   "homepage": "https://github.com/chenbobby/barbaric#readme",
   "dependencies": {
+    "chai": "^4.1.0",
+    "chai-http": "^3.0.0",
     "mocha": "^3.4.2",
     "mongoose": "^4.11.3",
     "nyc": "^11.0.3",

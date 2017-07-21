@@ -7,7 +7,7 @@ import createServer from '../server'
 
 
 //      Create Test Environment
-const server = createServer('Barbaric Test');
+export const server = createServer('test');
 const db = mongoose.connect('mongodb://127.0.0.1:27017/barbaric-test', {
     useMongoClient: true
 });
@@ -39,7 +39,7 @@ before((done) => {
 //      Stop server after running tests
 after((done) => {
 
-    //server.close()
+    server.close()
     db.close();
 
     done();

@@ -11,18 +11,40 @@ import router from './routes'
 
 
 //      Server Factory
-export default function createServer(name) {
+export default function createServer(env) {
+
 
     //  Create Server Instance
-    const server = restify.createServer({
-        name: name,
-        log: log
-    });
+    let server;
+    
+    switch (env) {
+        case 'dev':
+            server = restify.createServer({
+                name: 'Barbaric Dev',
+                log: log
+            });
+            break;
+
+        case 'test':
+            server = restify.createServer({
+                name: 'Barbaric Test'
+            });
+            break;
+
+        case 'prod':
+            server = restify.createServer({
+                name: 'Barbaric Prod'
+            })
+            break;
+
+        default:
+            throw new Error('Invalid Server Environment');
+    }
 
 
     //  Pre-Routing Middleware
     server.pre((req, res, next) => {
-        log.info('Request recieved...');
+        server.log.info('Request recieved...');
         return next();
     });
 

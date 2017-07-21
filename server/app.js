@@ -7,7 +7,7 @@ import mongoose from 'mongoose'; mongoose.promise = global.Promise;
 
 
 //      Instantiate Servers 
-const server = createServer('Bararic App');
+const server = createServer('dev');
 const db = mongoose.connect('mongodb://127.0.0.1:27017/barbaric-dev', {
     useMongoClient: true
 });

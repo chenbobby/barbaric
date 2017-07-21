@@ -1,14 +1,13 @@
 //      /tests/test.api.js
 
 //      Imports
-import assert from 'assert';
-
+import { expect } from 'chai';
 
 
 describe('thing', function() {
 
     it('does nothing', function() {
-        assert(true);
+        expect(true).to.be.true;
     })
     
 })
