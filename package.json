@@ -4,7 +4,7 @@
   "description": "safe messaging with no language barriers",
   "main": "server/app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "nyc mocha server/tests/ --require babel-register | bunyan -o short",
     "start": "nodemon server/app.js --exec babel-node | bunyan -o short",
     "build": "webpack --progress --env dev"
   },
@@ -19,10 +19,14 @@
   },
   "homepage": "https://github.com/chenbobby/barbaric#readme",
   "dependencies": {
+    "mocha": "^3.4.2",
+    "mongoose": "^4.11.3",
+    "nyc": "^11.0.3",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
     "restify": "^5.0.1",
-    "restify-router": "^0.4.2"
+    "restify-router": "^0.4.2",
+    "supertest": "^3.0.0"
   },
   "devDependencies": {
     "babel-cli": "^6.24.1",

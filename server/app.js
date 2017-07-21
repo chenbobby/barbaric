@@ -1,22 +1,33 @@
-//      /server/index.js
+//      /server/app.js
 
 //      Imports
-import createServer from './server.js';
-import log from './log.js';
+import createServer from './server';
+import mongoose from 'mongoose'; mongoose.promise = global.Promise;
 
 
 
-//      Constants
-const PORT = 8080;
+//      Instantiate Servers 
 const server = createServer('Bararic App');
+const db = mongoose.connect('mongodb://127.0.0.1:27017/barbaric-dev', {
+    useMongoClient: true
+});
 
 
 
-//      Run Server
-server.listen(PORT, 'localhost', (err) => {
+//      Run REST Server
+server.listen(8080, 'localhost', (err) => {
     if (err) {
-        log.warn('Server failed to start: ', err);
+        throw new Error('Server failed to start.');
     }
 
-    log.info(`${server.name} is listening at ${server.url}`);
+    server.log.info(`${server.name} is listening at ${server.url}`);
 });
+
+
+
+//      Run MongoDB
+mongoose.connection.once('open', () => {
+    server.log.info('Connected to MongoDB');
+}).on('error', (err) => {
+    server.log.warn('MongoDB Connection Error: ', err);
+})

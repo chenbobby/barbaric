@@ -2,6 +2,8 @@
 
 //      Imports
 import restify from 'restify';
+import mongoose from 'mongoose'; mongoose.promise = global.Promise;
+
 import log from './log.js';
 import middleware from './middleware';
 import router from './routes'
@@ -11,6 +13,7 @@ import router from './routes'
 //      Server Factory
 export default function createServer(name) {
 
+    //  Create Server Instance
     const server = restify.createServer({
         name: name,
         log: log
